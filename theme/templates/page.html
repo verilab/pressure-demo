@@ -2,9 +2,9 @@
 
 {% block head %}
 {{ super() }}
-<title>{{ entry.title + ' - ' + site.title }}</title>
-<link rel="stylesheet" href="{{ url_for('theme.static', filename='railscasts.min.css') }}">
-<script src="{{ url_for('theme.static', filename='highlight.min.js') }}"></script>
+<title>{{ entry.title ~ ' - ' ~ site.title }}</title>
+<link rel="stylesheet" href="{{ url_for(name='theme.static', elements=['railscasts.min.css']) }}">
+<script src="{{ url_for(name='theme.static', elements=['highlight.min.js']) }}"></script>
 {% endblock %}
 
 {% block main %}
@@ -12,7 +12,7 @@
   <h1 class="article-title">{{ entry.title }}</h1>
   {% include ['custom/meta.html', 'meta.html'] ignore missing %}
   <div class="content">
-    {{ entry.content|safe }}
+    {{ entry.content | safe }}
   </div>
 </article>
 {% endblock %}

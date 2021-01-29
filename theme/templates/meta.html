@@ -2,14 +2,14 @@
 <div class="meta">
   {% if entry.created %}
   <span>创建于
-    <time datetime="{{ entry.created.strftime('%Y-%m-%d') }}">{{ entry.created.strftime('%Y-%m-%d') }}</time></span>
+    <time datetime="{{ entry.created }}">{{ entry.created }}</time></span>
   {% endif %}
   {%- if entry.updated and entry.updated != entry.created -%}
   {%- if entry.created -%}
   <span>，</span>
   {%- endif -%}
   <span>更新于
-    <time datetime="{{ entry.updated.strftime('%Y-%m-%d') }}">{{ entry.updated.strftime('%Y-%m-%d') }}</time></span>
+    <time datetime="{{ entry.updated }}">{{ entry.updated }}</time></span>
   {% endif %}
   {% if entry.categories %}
   <br>
@@ -18,7 +18,7 @@
     {%- if loop.index > 1 -%}
     <span>、</span>
     {%- endif -%}
-    <a href="{{ url_for('category', name=category) }}">{{ category }}</a>
+    <a href="{{ url_for(name='category', elements=[category]) }}">{{ category }}</a>
     {%- endfor -%}
   </span>
   {% endif %}
@@ -29,7 +29,7 @@
     {%- if loop.index > 1 -%}
     <span>、</span>
     {%- endif -%}
-    <a href="{{ url_for('tag', name=tag) }}">{{ tag }}</a>
+    <a href="{{ url_for(name='tag', elements=[tag]) }}">{{ tag }}</a>
     {%- endfor -%}
   </span>
   {% endif %}

@@ -2,7 +2,7 @@
 
 {% block head %}
 {{ super() }}
-<title>{{ archive.name + ' - ' + archive.type + ' - ' + site.title }}</title>
+<title>{{ archive.name ~ ' - ' ~ archive.type ~ ' - ' ~ site.title }}</title>
 {% endblock %}
 
 {% block main %}
@@ -18,7 +18,7 @@
         {% for entry in entries %}
         <tr>
           <td style="font-size: 85%">
-            <time>{{ entry.created.strftime('%Y.%m.%d') if entry.created else '' }}</time>
+            <time>{% if entry.created %}{{ entry.created }}{% endif %}</time>
           </td>
           <td><a href="{{ entry.url }}">{{ entry.title }}</a></td>
         </tr>
